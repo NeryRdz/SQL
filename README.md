@@ -4,7 +4,7 @@ SQL Queries
 ## Spanish
 Este es un repositorio que estara enfocado a realizar consultas SQL con una base de datos ya preterminada llamada "SAKILA".
 
-## Como instalar sakila
+### Como instalar sakila
 1. Entrar al siguiente link y descargar la base de datos: 
    https://drive.google.com/file/d/1fElwihpHXNhwNGjQIPkQslyVpJbh-fkN/view?usp=sharing
 
@@ -16,7 +16,7 @@ Este es un repositorio que estara enfocado a realizar consultas SQL con una base
 ## English 
 This repository focuses on running SQL queries with a pre-built database called "SAKILA".
 
-## How to install sakila
+### How to install sakila
 1. Visit the following link to download the database:
    https://drive.google.com/file/d/1fElwihpHXNhwNGjQIPkQslyVpJbh-fkN/view?usp=sharing
 
