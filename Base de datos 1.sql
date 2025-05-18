@@ -619,16 +619,22 @@ SELECT Nombre, Direccion, IFNULL(Telefono, 'Sin numero') AS Telefono FROM Client
 
 -- 
 -- Inner Join
+-- INNER JOIN entre Vendedor y Departamento usando ID como campo de relación
 SELECT v1.ID AS IDVendedor, v1.Nombre, d1.NombreDep FROM Vendedor AS v1 INNER JOIN Departamento d1 ON v1.ID = d1.ID;
+-- INNER JOIN que relaciona Marcas con sus respectivos Artículos
 SELECT m1.ID AS IDMarca, m1.NombreMarca, a1.ID AS IDProducto, a1.Descripcion FROM Marca AS m1 INNER JOIN Articulos a1 ON m1.ID = a1.ID;
 
 -- Right Join
+-- RIGHT JOIN que muestra todos los Artículos con su Departamento (si existe)
 SELECT d1.NombreDep, a1.ID AS IDArticulo, a1.Descripcion FROM Departamento AS d1 RIGHT JOIN Articulos a1 ON d1.ID = a1.ID;
+-- RIGHT JOIN que obtiene todos los Vendedores con información de Departamento
 SELECT d1.NombreDep, v1.ID AS IDVendedor, v1.Nombre  FROM Departamento AS d1 RIGHT JOIN Vendedor v1 ON d1.ID = v1.ID;
 
 
 -- Left Join
+-- LEFT JOIN que recupera todos los Artículos con su Marca asociada (si existe)
 SELECT a1.ID AS IDProducto, a1.Descripcion, m1.NombreMarca FROM Articulos AS a1 LEFT JOIN Marca m1 ON a1.ID = m1.ID;
+-- LEFT JOIN que obtiene todos los Vendedores con datos de su Departamento
 SELECT v1.ID AS IDVendedor, v1.Nombre, d1.NombreDep FROM Vendedor AS v1 LEFT JOIN Departamento d1 ON v1.ID = d1.ID;
 
 -- Subquery

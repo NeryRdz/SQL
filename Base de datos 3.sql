@@ -544,16 +544,22 @@ SELECT NumJugador, IFNULL(Telefono, 'No registrado') AS Telefono FROM Jugador;
 SELECT Nombre, IFNULL(Telefono, 'Baja') AS Telefono FROM Jugador;
 
 -- Inner Join
-  SELECT c1.ID AS IDCategoria, c1.Descripcion, e1.ID AS IDEquipo FROM Categoria AS c1 INNER JOIN Equipo e1 ON c1.ID = e1.ID;
-  SELECT j1.Nombre, e1.ID AS IDEquipo FROM Equipo AS e1 INNER JOIN Jugador AS j1 ON j1.ID_Equipo = e1.ID;
+-- Relaciona categorías con sus equipos correspondientes
+SELECT c1.ID AS IDCategoria, c1.Descripcion, e1.ID AS IDEquipo FROM Categoria AS c1 INNER JOIN Equipo e1 ON c1.ID = e1.ID;
+-- Une equipos con sus jugadores registrados
+SELECT j1.Nombre, e1.ID AS IDEquipo FROM Equipo AS e1 INNER JOIN Jugador AS j1 ON j1.ID_Equipo = e1.ID;
   
 -- Right Join
-  SELECT a1.Nombre AS NombreArbitro, c1.ID AS IDCancha, Descripcion FROM Arbitro AS a1 RIGHT JOIN Cancha c1 ON a1.ID = c1.ID_Arbitro;
-  SELECT e1.ID AS IDEquipo, e1.Descripcion, c1.ID AS IDCancha, c1.Descripcion FROM Equipo AS e1 RIGHT JOIN Cancha c1 ON e1.ID = c1.ID_Equipo;
+-- Muestra todas las canchas con sus árbitros asignados (si existen)
+SELECT a1.Nombre AS NombreArbitro, c1.ID AS IDCancha, Descripcion FROM Arbitro AS a1 RIGHT JOIN Cancha c1 ON a1.ID = c1.ID_Arbitro;
+-- Lista todas las canchas con información de equipos asociados
+SELECT e1.ID AS IDEquipo, e1.Descripcion, c1.ID AS IDCancha, c1.Descripcion FROM Equipo AS e1 RIGHT JOIN Cancha c1 ON e1.ID = c1.ID_Equipo;
 
 -- Left Join
-  SELECT e1.ID AS IDEquipo, e1.Descripcion, c1.ID AS IDCancha, c1.Descripcion FROM Equipo AS e1 LEFT JOIN Cancha c1 ON e1.ID = c1.ID_Equipo;
-  SELECT e1.ID AS IDEquipo, j1.Nombre FROM Jugador AS j1 LEFT JOIN Equipo AS e1 ON j1.ID_Equipo =  e1.ID;
+-- Obtiene todos los equipos con sus canchas asignadas (si las tienen)
+SELECT e1.ID AS IDEquipo, e1.Descripcion, c1.ID AS IDCancha, c1.Descripcion FROM Equipo AS e1 LEFT JOIN Cancha c1 ON e1.ID = c1.ID_Equipo;
+-- Recupera todos los jugadores mostrando su equipo (si están asignados)
+SELECT e1.ID AS IDEquipo, j1.Nombre FROM Jugador AS j1 LEFT JOIN Equipo AS e1 ON j1.ID_Equipo =  e1.ID;
 
 -- Subquery
 -- Listar los nombres de los jugadores que pertenecen a equipos con más de 15 jugadores.

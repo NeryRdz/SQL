@@ -565,16 +565,22 @@ SELECT Nombre, IFNULL(Telefono, 'Telefono Sin Registrar') AS Telefono FROM Maest
 SELECT Nombre, IFNULL(Telefono, 'No Registrado') AS Telefono FROM Estudiante;
 
 -- Inner Join
+-- Relaciona estudiantes con su historial académico mediante el ID
 SELECT e1.Nombre, e1.Grupo, h1.Promedio FROM Estudiante AS e1 INNER JOIN HistorialAcademico h1 ON e1.ID = h1.ID;
+-- Asocia maestros con las materias que imparten a través de la tabla intermedia
 SELECT m1.Nombre, m2.ID_Materia FROM Maestro AS m1 INNER JOIN Maestro_Materia m2 ON m1.ID = m2.ID_Maestro;
 
 -- Right Join
+-- Muestra todos los maestros, incluso si no tienen materias asignadas
 SELECT m1.ID_Materia, m2.Nombre FROM Maestro_Materia AS m1 RIGHT JOIN Maestro m2 ON m1.ID_Maestro = m2.ID;
+-- Obtiene todo el historial académico, incluyendo registros sin estudiante asociado
 SELECT e1.Nombre, e1.Grupo, h1.Promedio FROM Estudiante AS e1 RIGHT JOIN HistorialAcademico h1 ON e1.ID = h1.ID;
 
 
 -- Left Join
+-- Lista todos los estudiantes, mostrando su historial académico si existe
 SELECT e1.ID AS IDEstudiante, e1.Grupo, h1.Promedio FROM Estudiante AS e1 LEFT JOIN HistorialAcademico h1 ON e1.ID = h1.ID;
+-- Recupera todos los maestros, con sus materias asignadas si las tienen
 SELECT m1.Nombre, m2.ID_Materia FROM Maestro AS m1 LEFT JOIN Maestro_Materia m2 ON m1.ID = m2.ID_Maestro;
 
 -- Subquery

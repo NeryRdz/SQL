@@ -726,23 +726,29 @@ SELECT Nombre, IFNULL(Descripcion, 'No proporcionada') AS Descripcion FROM Amigo
 SELECT ID, Nombre, IFNULL(Descripcion, 'Expulsado') AS Descripcion FROM Usuario WHERE ID > 30;
 
 -- Inner Join
+-- Relaciona usuarios con sus amigos a través de la tabla intermedia Usuario_Amigo
 SELECT  u1.Nombre AS NombreUsuario, a1.Nombre AS NombreAmigo FROM Usuario AS u1 
 INNER JOIN Usuario_Amigo u2 ON u1.ID = u2.ID_Usuario INNER JOIN Amigo a1 ON a1.ID = u2.ID_Amigo;
 
+-- Conecta usuarios con sus habilidades mediante la tabla puente Usuario_Habilidad
 SELECT u1.Nombre AS NombreUsuario, h1.Nombre AS NombreHabilidad, h1.Descripcion FROM Usuario AS u1 
 INNER JOIN Usuario_Habilidad u2 ON u1.ID = u2.ID_Usuario INNER JOIN Habilidad h1 ON h1.ID = u2.ID_Habilidad;
 
 -- Right Join
+-- Muestra todas las mascotas con sus dueños (si tienen)
 SELECT u1.Nombre AS NombreUsuario,m1.Nombre AS NombreMascota, m1.Tipo FROM Usuario AS u1 
 RIGHT JOIN Usuario_Mascota u2 ON u1.ID = u2.ID_Usuario RIGHT JOIN Mascota m1 ON m1.ID = u2.ID_Mascota;
 
+-- Lista todos los objetos con los usuarios que los poseen (si existen)
 SELECT u1.Nombre AS NombreUsuario, o1.Nombre, o1.Descripcion FROM Usuario AS u1 
 RIGHT JOIN Usuario_Objeto u2 ON u1.ID = u2.ID_Usuario RIGHT JOIN Objeto o1 ON o1.ID = u2.ID_Objeto;
 
 -- Left Join
+-- Obtiene todos los usuarios con sus habilidades (si tienen)
 SELECT u1.Nombre AS NombreUsuario, h1.Nombre AS NombreHabilidad, h1.Descripcion FROM Usuario AS u1 
 LEFT JOIN Usuario_Habilidad u2 ON u1.ID = u2.ID_Usuario LEFT JOIN Habilidad h1 ON h1.ID = u2.ID_Habilidad;
 
+-- Recupera todos los usuarios con sus mascotas (si tienen)
 SELECT u1.Nombre AS NombreUsuario,m1.Nombre AS NombreMascota, m1.Tipo FROM Usuario AS u1 
 LEFT JOIN Usuario_Mascota u2 ON u1.ID = u2.ID_Usuario LEFT JOIN Mascota m1 ON m1.ID = u2.ID_Mascota;
 
